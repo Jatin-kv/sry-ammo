@@ -80,7 +80,7 @@
   </style>
 </head>
 <body>
-  <h1>I'm Sorry Siri (Ammo)💐</h1>
+  <h1>I'm Sorry Siri (Ammo)💐❤️</h1>
 
   <div class="letter-box">
     <p>
@@ -94,24 +94,24 @@
 
   <!-- ❤️ Background Music -->
   <audio autoplay loop >
-    <source src="music.mp3" type="audio/mp3" />
-    Your browser does not support the audio element.
-  </audio>
-
+ <audio id="bg-music" loop>
+  <source src="music.mp3" type="audio/mp3" />
+  Your browser does not support the audio element.
+</audio>
+    
   <script>
 
-window.addEventListener('DOMContentLoaded', () => {
+ window.addEventListener('DOMContentLoaded', () => {
     const music = document.getElementById('bg-music');
     music.volume = 0.7;
 
-    // Try to autoplay when the page is loaded
+    // Try to autoplay, fallback to click
     music.play().catch(() => {
-      // If autoplay is blocked, wait for user interaction
-      const resumeAudio = () => {
+      const clickToPlay = () => {
         music.play();
-        document.removeEventListener('click', resumeAudio);
+        document.removeEventListener('click', clickToPlay);
       };
-      document.addEventListener('click', resumeAudio);
+      document.addEventListener('click', clickToPlay);
     });
   });
     const hearts = ['🌹', '💖', '💕', '🌸', '💐', '🍫', '🧸'];
