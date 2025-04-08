@@ -101,8 +101,19 @@
     
   <script>
 
- const music = document.getElementById('bg-music');
-  music.volume = 0.7;
+  window.addEventListener('DOMContentLoaded', () => {
+    const music = document.getElementById('bg-music');
+    music.volume = 0.7;
+
+    // Try to autoplay, fallback to click
+    music.play().catch(() => {
+      const clickToPlay = () => {
+        music.play();
+        document.removeEventListener('click', clickToPlay);
+      };
+      document.addEventListener('click', clickToPlay);
+    });
+  });
     
     const hearts = ['🌹', '💖', '💕', '🌸', '💐', '🍫', '🧸'];
 
