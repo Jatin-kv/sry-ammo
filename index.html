@@ -68,17 +68,6 @@
       }
     }
 
-    video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
-      opacity: 0.15;
-    }
-
     @media screen and (max-width: 480px) {
       h1 {
         font-size: 2rem;
@@ -91,7 +80,7 @@
   </style>
 </head>
 <body>
-  <h1>I'm Sorry Siri (Ammo)💐💖</h1>
+  <h1>I'm Sorry Siri (Ammo)💐</h1>
 
   <div class="letter-box">
     <p>
@@ -102,22 +91,29 @@
       I promise, this won’t happen again... 💖💐💐
     </p>
   </div>
-  <div style="position: absolute; bottom: 10px; width: 100%; text-align: center; font-size: 1rem; font-weight: 400; color: #ffffff; z-index: 1;">
-    &copy; 2025 Jatin Kumar. All rights reserved.
-  </div>
-<!--   <video autoplay loop unmuted playsinline>
-    <source src="sry.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video> -->
-<!-- ❤️ Background Music -->
-  <audio id="bgm"autoplay loop>
+
+  <!-- ❤️ Background Music -->
+  <audio autoplay loop >
     <source src="music.mp3" type="audio/mp3" />
     Your browser does not support the audio element.
   </audio>
 
   <script>
-     const music = document.getElementById('bgm');
-  music.volume = 0.7; 
+
+window.addEventListener('DOMContentLoaded', () => {
+    const music = document.getElementById('bg-music');
+    music.volume = 0.7;
+
+    // Try to autoplay when the page is loaded
+    music.play().catch(() => {
+      // If autoplay is blocked, wait for user interaction
+      const resumeAudio = () => {
+        music.play();
+        document.removeEventListener('click', resumeAudio);
+      };
+      document.addEventListener('click', resumeAudio);
+    });
+  });
     const hearts = ['🌹', '💖', '💕', '🌸', '💐', '🍫', '🧸'];
 
     function createHeart() {
@@ -133,5 +129,10 @@
 
     setInterval(createHeart, 200);
   </script>
+
+  <!-- Copyright -->
+  <div style="position: absolute; bottom: 10px; width: 100%; text-align: center; font-size: 0.8rem; color: #fff; z-index: 1;">
+    &copy; 2025 Jatin Kumar. All rights reserved.
+  </div>
 </body>
 </html>
